@@ -507,8 +507,30 @@ window.scrollReveal = (function( window ){
       var elTop    = self.getOffset( elem.domEl ).top;
       var elBottom = elTop + elHeight;
       var vFactor  = elem.config.vFactor || 0;
+      var isInVP = ( confirmBounds() || isPositionFixed() );
+      setClassName();
 
-      return ( confirmBounds() || isPositionFixed() );
+      return isInVP;
+
+      function setClassName() {
+
+        var classes = elem.domEl.className.split(' ');
+        var toAdd = isInVP ? 'sr-inside-viewport' : 'sr-outside-viewport';
+        var toRemove = isInVP ? 'sr-outside-viewport' : 'sr-inside-viewport';
+
+        var ix = classes.indexOf(toRemove);
+        if (ix !== -1) {
+          classes.splice(ix, 1);
+        }
+
+        ix = classes.indexOf(toAdd);
+        if (ix === -1) {
+          classes.push(toAdd);
+        }
+
+        elem.domEl.className = classes.join(' ');
+
+      }
 
       function confirmBounds(){
 
