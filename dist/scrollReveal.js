@@ -117,11 +117,11 @@ window.scrollReveal = (function( window ){
 
         el.removeAttribute('data-sr');
 
-        el.setAttribute( 'style',
-            elem.styles.inline
-          + elem.styles.initial
-        );
-      })
+        // el.setAttribute( 'style',
+        //     elem.styles.inline
+        //   + elem.styles.initial
+        // );
+      });
 
       self.scrolled = self.scrollY();
       self.animate( flag );
@@ -142,44 +142,44 @@ window.scrollReveal = (function( window ){
           elem    = self.elems[ key ];
           visible = self.isElemInViewport( elem );
 
-          if ( visible ){
-
-            if ( self.config.delay === 'always'
-            || ( self.config.delay === 'onload' && flag )
-            || ( self.config.delay === 'once'   && !elem.seen ) ){
-
-              // Use delay.
-              elem.domEl.setAttribute( 'style',
-                  elem.styles.inline
-                + elem.styles.target
-                + elem.styles.transition
-              );
-
-            } else {
-
-              // Don’t use delay.
-              elem.domEl.setAttribute( 'style',
-                  elem.styles.inline
-                + elem.styles.target
-                + elem.styles.reset
-              );
-            }
-
-            elem.seen = true;
-
-            if ( !elem.config.reset && !elem.animating ){
-              elem.animating = true;
-              complete( key );
-            }
-
-          } else if ( !visible && elem.config.reset ){
-
-            elem.domEl.setAttribute( 'style',
-                elem.styles.inline
-              + elem.styles.initial
-              + elem.styles.reset
-            );
-          }
+          // if ( visible ){
+          //
+          //   if ( self.config.delay === 'always'
+          //   || ( self.config.delay === 'onload' && flag )
+          //   || ( self.config.delay === 'once'   && !elem.seen ) ){
+          //
+          //     // Use delay.
+          //     elem.domEl.setAttribute( 'style',
+          //         elem.styles.inline
+          //       + elem.styles.target
+          //       + elem.styles.transition
+          //     );
+          //
+          //   } else {
+          //
+          //     // Don’t use delay.
+          //     elem.domEl.setAttribute( 'style',
+          //         elem.styles.inline
+          //       + elem.styles.target
+          //       + elem.styles.reset
+          //     );
+          //   }
+          //
+          //   elem.seen = true;
+          //
+          //   if ( !elem.config.reset && !elem.animating ){
+          //     elem.animating = true;
+          //     complete( key );
+          //   }
+          //
+          // } else if ( !visible && elem.config.reset ){
+          //
+          //   elem.domEl.setAttribute( 'style',
+          //       elem.styles.inline
+          //     + elem.styles.initial
+          //     + elem.styles.reset
+          //   );
+          // }
         }
       }
 
@@ -194,7 +194,7 @@ window.scrollReveal = (function( window ){
 
         setTimeout(function(){
 
-          elem.domEl.setAttribute( 'style', elem.styles.inline );
+          // elem.domEl.setAttribute( 'style', elem.styles.inline );
           elem.config.complete( elem.domEl );
           delete self.elems[ key ];
 
